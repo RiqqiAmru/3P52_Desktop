@@ -18,20 +18,45 @@ public class App {
         Font font = new Font("Monospaced", Font.PLAIN, 17);
 //For MessageArea and TextField font.
         UIManager.put("OptionPane.messageFont", font);
-        int bilangan = 9;
 
-        int a = 1;
+        int awal = 1, inputan = 7, angkaMendatar = 12, angkaSamping = 0;
+        int angkaTengah = 0, spasi = 7, printSpasi = 0, angkaTampilTengah = 0;
         String tampil = "";
 
-        while (a <= bilangan) {
-            for (int i = 0; i < 11; i++) {
-                tampil += a + " ";
+        while (awal <= inputan) {
+            angkaSamping = awal;
+            angkaMendatar = angkaSamping + 11;
+            angkaTengah = angkaSamping + 2;
+            angkaTampilTengah = angkaTengah;
+            printSpasi = spasi;
+            int angkaAkhir = 0;
+            while (angkaSamping >= 1) {
+                tampil += angkaMendatar + " ";
+                System.out.print(angkaMendatar + " ");
+                angkaAkhir += angkaMendatar;
+                angkaSamping--;
+                angkaMendatar++;
             }
-            tampil += "\n";
-            a++;
-        }
-        JOptionPane.showMessageDialog(null, tampil);
+            while (angkaTampilTengah >= 3) {
+                tampil += angkaTampilTengah + " ";
+                System.out.print(angkaTampilTengah + " ");
+                angkaTampilTengah--;
+                angkaAkhir += angkaTengah;
+            };
+            while (printSpasi >= 1) {
+                tampil += "     ";
+                System.out.print("     ");
+                printSpasi--;
+            }
+            tampil += " = " + angkaAkhir + "\n";
+            System.out.println(" = " + angkaAkhir);
+            awal++;
+            spasi--;
 
+        }
+//            JOptionPane.showMessageDialog(null, tampil);
+
+//        JOptionPane.showMessageDialog(null, tampil);
     }
 
 }

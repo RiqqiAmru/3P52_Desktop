@@ -5,6 +5,7 @@
 package d_riqqi;
 
 import java.awt.Font;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -71,34 +72,37 @@ public class Frame_riqqi2 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(NILAI, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                     .addComponent(JUMLAH))
                 .addGap(97, 97, 97))
             .addGroup(layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(JUMLAH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(NILAI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addGap(50, 50, 50))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -107,17 +111,21 @@ public class Frame_riqqi2 extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             int p = Integer.parseInt(JUMLAH.getText());
-            
-            String hasil = "";
-            int a = 1;
-            hasil += " TAMPILAN DENGAN WHILE \n";
-            while (a <= p) {
-                hasil += a + " ";
-                a++;
+
+            if (p >= 1 & p <= 10) {
+                String hasil = "";
+                int a = 1;
+                hasil += " TAMPILAN DENGAN WHILE \n";
+                while (a <= p) {
+                    hasil += a + " ";
+                    a++;
+                }
+                hasil += "\n";
+                javax.swing.JOptionPane.showMessageDialog(this, hasil, "TAMPILAN DERET DENGAN WHILE",
+                        javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "ANGKA YANG DIMASUKKAN TIDAK TEPAT");
             }
-            hasil += "\n";
-            javax.swing.JOptionPane.showMessageDialog(this, hasil, "TAMPILAN DERET DENGAN WHILE",
-                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "MASUKKAN ANGKA SAJA");
         }
@@ -130,13 +138,18 @@ public class Frame_riqqi2 extends javax.swing.JFrame {
         int k = 0;
         try {
             k = Integer.parseInt(NILAI.getText());
-            int a = 1;
-            tampil += " TAMPILAN DENGAN FOR \n";
-            for (int b = 1; b <= k; b++) {
-                tampil += b + " ";
+
+            if (k >= 1 && k <= 5) {
+                int a = 1;
+                tampil += " TAMPILAN DENGAN FOR \n";
+                for (int b = 1; b <= k; b++) {
+                    tampil += b + " ";
+                }
+                javax.swing.JOptionPane.showMessageDialog(this, tampil, "TAMPILAN DERET DENGAN FOR",
+                        javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "ANGKA YANG DIMASUKKAN TIDAK TEPAT");
             }
-            javax.swing.JOptionPane.showMessageDialog(this, tampil, "TAMPILAN DERET DENGAN FOR",
-                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "MASUKKAN ANGKA SAJA");
 
@@ -162,13 +175,15 @@ public class Frame_riqqi2 extends javax.swing.JFrame {
 //For MessageArea and TextField font.
         UIManager.put("OptionPane.messageFont", font);
         //</editor-fold>
-        
+//Font font = new Font("Monospaced", Font.PLAIN, 12);
+//For MessageArea and TextField font.
+        UIManager.put("OptionPane.messageFont", font);
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Frame_riqqi2().setVisible(true);
-                
+
             }
         });
     }
