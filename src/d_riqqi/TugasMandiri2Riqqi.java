@@ -93,34 +93,31 @@ public class TugasMandiri2Riqqi extends javax.swing.JFrame {
                 int angkaTengah = 0, spasi = 7, printSpasi = 0, angkaTampilTengah = 0;
                 String tampil = "";
 
-                while (awal <= inputan) {
+                do {
                     angkaSamping = awal;
                     angkaMendatar = angkaSamping + 11;
                     angkaTengah = angkaSamping + 2;
                     angkaTampilTengah = angkaTengah;
                     printSpasi = spasi;
                     int angkaAkhir = 0;
-                    while (angkaSamping >= 1) {
+                    for (; angkaSamping >= 1; angkaSamping--) {
                         tampil += angkaMendatar + " ";
                         angkaAkhir += angkaMendatar;
-                        angkaSamping--;
                         angkaMendatar++;
                     }
-                    while (angkaTampilTengah >= 3) {
+                    for (; angkaTampilTengah >= 3; angkaTampilTengah--) {
                         tampil += angkaTampilTengah + " ";
-                        angkaTampilTengah--;
-                        angkaAkhir += angkaTengah;
-                    };
-                    while (printSpasi >= 1) {
+                        angkaAkhir += angkaTampilTengah;
+                    }
+                    for (; printSpasi >= 1; printSpasi--) {
                         tampil += "     ";
                         System.out.print("     ");
-                        printSpasi--;
                     }
                     tampil += " = " + angkaAkhir + "\n";
                     awal++;
                     spasi--;
 
-                }
+                } while (awal <= inputan);
                 JOptionPane.showMessageDialog(null, tampil);
 
             } else {

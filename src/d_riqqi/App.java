@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
 public class App {
 
     public static void main(String[] args) {
-        Font font = new Font("Monospaced", Font.PLAIN, 17);
-//For MessageArea and TextField font.
+        Font font = new Font("Monospaced", Font.PLAIN, 15);
+        //For MessageArea and TextField font.
         UIManager.put("OptionPane.messageFont", font);
 
         int awal = 1, inputan = 7, angkaMendatar = 12, angkaSamping = 0;
