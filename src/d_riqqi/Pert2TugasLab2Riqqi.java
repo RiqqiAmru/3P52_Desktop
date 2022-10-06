@@ -51,6 +51,7 @@ public class Pert2TugasLab2Riqqi extends javax.swing.JFrame {
         checkDanaSegar = new javax.swing.JCheckBox();
         checkCariJodoh = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,10 +104,6 @@ public class Pert2TugasLab2Riqqi extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(238, 238, 238))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,32 +130,34 @@ public class Pert2TugasLab2Riqqi extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel5)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(137, 137, 137)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(137, 137, 137)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(checkInformasi)
-                                                    .addComponent(radioUsia1))))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                            .addComponent(checkInformasi)
+                                            .addComponent(radioUsia1)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(14, 14, 14)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(radioLuarJawa)
                                     .addComponent(radioUsia3)
                                     .addComponent(checkCariJodoh))))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 122, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(150, 150, 150))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addGap(178, 178, 178))))))
+                                .addGap(178, 178, 178))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,8 +193,10 @@ public class Pert2TugasLab2Riqqi extends javax.swing.JFrame {
                     .addComponent(checkDanaSegar)
                     .addComponent(checkCariJodoh))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -210,34 +211,30 @@ public class Pert2TugasLab2Riqqi extends javax.swing.JFrame {
 
         String hasil = "";
         if (radioJateng.isSelected()) {
-            lokasi = "Jawa Tengah";
+            lokasi = "Jawa Tengah  (dekat)";
         } else if (radioLuarJawa.isSelected()) {
-            lokasi = "Luar Jawa";
+            lokasi = "Luar Jawa   (jauh ini)";
         } else if (radioPkl.isSelected()) {
-            lokasi = "pekalongan";
-        } else {
-            JOptionPane.showMessageDialog(this, "PILIH LOKASINYA", "ERROR", JOptionPane.ERROR_MESSAGE);
+            lokasi = "pekalongan (dekat sekali)";
         }
 
         if (radioUsia1.isSelected()) {
             usia = "17 - 25 tahun";
         } else if (radioUsia2.isSelected()) {
-            usia = "26 - 45 tahun";
+            usia = "26 - 45 tahun ";
         } else if (radioUsia3.isSelected()) {
-            usia = "46 - 70 tahun";
-        } else {
-            JOptionPane.showMessageDialog(this, "USIANYA GABOLE KOSONG", "ERROR", JOptionPane.ERROR_MESSAGE);
+            usia = "46 - 70 tahun (udah tua)";
         }
 
         if (checkInformasi.isSelected()) {
-            informasi += "\n      - INFORMASI";
-        } 
+            informasi += "\n      - INFORMASI (sipaling niat)";
+        }
         if (checkDanaSegar.isSelected()) {
-            informasi += "\n      - DANA SEGAR";
-        } 
+            informasi += "\n      - DANA SEGAR (sipaling cari uang)";
+        }
         if (checkCariJodoh.isSelected()) {
-            informasi += "\n      - CARI JODOH";
-        } 
+            informasi += "\n      - CARI JODOH (ga niat seminar)";
+        }
 
         hasil += "\n      FORM SEMINAR";
         hasil += "\n NAMA      : " + nama;
@@ -245,8 +242,10 @@ public class Pert2TugasLab2Riqqi extends javax.swing.JFrame {
         hasil += "\n LOKASI    : " + lokasi;
         hasil += "\n USIA      : " + usia;
         hasil += "\n KEPERLUAN : " + informasi;
+
         
-        JOptionPane.showMessageDialog(this, hasil);
+            JOptionPane.showMessageDialog(this, hasil);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -300,6 +299,7 @@ public class Pert2TugasLab2Riqqi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JRadioButton radioJateng;
     private javax.swing.JRadioButton radioLuarJawa;
     private javax.swing.JRadioButton radioPkl;

@@ -125,7 +125,7 @@ public class Pert2TugasLab1Riqqi extends javax.swing.JFrame {
                                                     .addComponent(radioSI)
                                                     .addComponent(radioMI)
                                                     .addComponent(radioKA))))))
-                                .addGap(0, 10, Short.MAX_VALUE))
+                                .addGap(0, 136, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
@@ -184,16 +184,18 @@ public class Pert2TugasLab1Riqqi extends javax.swing.JFrame {
     }//GEN-LAST:event_checkS1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (checkD3.isSelected() && checkS1.isSelected()) {
-            JOptionPane.showMessageDialog(this, "PILIH JENJANG 1 SAJA BANG !!", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else if (checkD3.isSelected()) {
-            textJenjang.setText("Diploma 3 (Ahli Madya)");
-        } else if (checkS1.isSelected()) {
-            textJenjang.setText("Strata 1 (Sarjana)");
-        } else {
-            JOptionPane.showMessageDialog(this, "JANGAN DIKOSONGIN JENJANGNYA", "ERROR", JOptionPane.ERROR_MESSAGE);
+        String jenjang = "";
+        if ((checkD3.isSelected() && checkS1.isSelected())) {
+            jenjang = "Diploma 3 (Ahli Madya) | Strata 1 (Sarjana) ";
+        } else if (checkD3.isSelected() && !checkS1.isSelected()) {
+            jenjang = " Diploma 3 (Ahli Madya)";
+        } else if (!checkD3.isSelected() && checkS1.isSelected()) {
+            jenjang = " Strata 1 (Sarjana)";
+        } else if (!(checkD3.isSelected() && checkS1.isSelected())) {
+            jenjang = " Tidak Memilih";
         }
-
+        textJenjang.setText(jenjang);
+        
         if (radioKA.isSelected()) {
             textProdi.setText("Komputerisasi Akuntansi");
         } else if (radioMI.isSelected()) {
@@ -203,7 +205,7 @@ public class Pert2TugasLab1Riqqi extends javax.swing.JFrame {
         } else if (radioTI.isSelected()) {
             textProdi.setText("Teknik Informatika");
         } else {
-            JOptionPane.showMessageDialog(this, "JANGAN DIKOSONGIN PRODINYA", "ERROR", JOptionPane.ERROR_MESSAGE);
+            textProdi.setText("Tidak memilih nich");
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

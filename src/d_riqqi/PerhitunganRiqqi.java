@@ -40,9 +40,9 @@ public class PerhitunganRiqqi extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Nilai Tugas");
+        jLabel1.setText("Nilai Tugas [1-100]");
 
-        jLabel2.setText("Nilai Ujian");
+        jLabel2.setText("Nilai Ujian [1-100]");
 
         jLabel3.setText("Penjumlahan Nilai Rata - Rata");
 
@@ -75,7 +75,7 @@ public class PerhitunganRiqqi extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(textHasil, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                        .addComponent(textHasil, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -86,7 +86,7 @@ public class PerhitunganRiqqi extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(textTugas)
                                 .addComponent(textUjian, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,17 +124,36 @@ public class PerhitunganRiqqi extends javax.swing.JFrame {
             float a = Float.parseFloat(textTugas.getText());
             float b = Float.parseFloat(textUjian.getText());
 
-            if (a == 0 || b == 0) {
-                JOptionPane.showMessageDialog(this, "NILAI 0 TIDAK AKAN MENDAPAT HASIL", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
-            } else {
+            if (a < 0 || b < 0) {
+                JOptionPane.showMessageDialog(this, "NILAI GA BOLE NEGATIF", "INFORMATION", JOptionPane.ERROR_MESSAGE);
+                textTugas.setText("");
+                textUjian.setText("");
+                textHasil.setText("");
+            } else if (a == 0 || b == 0) {
+                JOptionPane.showMessageDialog(this, "NILAI 0 TIDAK AKAN MENDAPAT HASIL", "INFORMATION", JOptionPane.ERROR_MESSAGE);
+                textTugas.setText("");
+                textUjian.setText("");
+                textHasil.setText("");
+            } else if (a <= 100 && b <= 100) {
                 float hasilJumlah = (a + b) / 2;
                 textHasil.setText(String.valueOf(hasilJumlah));
+            } else {
+                JOptionPane.showMessageDialog(this, "NILAI DIATAS 100 GABOLE", "INFORMATION", JOptionPane.ERROR_MESSAGE);
+                textTugas.setText("");
+                textUjian.setText("");
+                textHasil.setText("");
             }
         } catch (Exception e) {
             if (textTugas.getText().isEmpty() || textUjian.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "NILAI TIDAK BOLEH KOSONG", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "NILAI TIDAK BOLEH KOSONG", "INFORMATION", JOptionPane.ERROR_MESSAGE);
+                textTugas.setText("");
+                textUjian.setText("");
+                textHasil.setText("");
             } else {
-                JOptionPane.showMessageDialog(this, "NILAI HARUS BERUPA ANGKA", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "NILAI HARUS BERUPA ANGKA", "INFORMATION", JOptionPane.ERROR_MESSAGE);
+                textTugas.setText("");
+                textUjian.setText("");
+                textHasil.setText("");
             }
         }
 //        textTugas.setText("");

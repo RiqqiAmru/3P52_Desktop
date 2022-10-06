@@ -45,6 +45,7 @@ public class FrameJenisKelaminRiqqi extends javax.swing.JFrame {
         jLabel2.setText("JENIS KELAMIN");
 
         buttonGroup1.add(radioPria);
+        radioPria.setSelected(true);
         radioPria.setText("LAKI - LAKI");
         radioPria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +109,7 @@ public class FrameJenisKelaminRiqqi extends javax.swing.JFrame {
 
     private void buttonProsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProsesActionPerformed
         String nama = textNama.getText();
+        
         String jenisKelamin = "";
         if (radioWanita.isSelected()) {
             jenisKelamin = "Perempuan";
