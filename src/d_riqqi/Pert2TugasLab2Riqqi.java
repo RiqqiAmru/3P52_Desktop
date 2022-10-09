@@ -242,10 +242,8 @@ public class Pert2TugasLab2Riqqi extends javax.swing.JFrame {
         hasil += "\n LOKASI    : " + lokasi;
         hasil += "\n USIA      : " + usia;
         hasil += "\n KEPERLUAN : " + informasi;
+        JOptionPane.showMessageDialog(this, hasil);
 
-        
-            JOptionPane.showMessageDialog(this, hasil);
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

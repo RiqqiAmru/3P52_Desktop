@@ -71,22 +71,23 @@ public class PerhitunganRiqqi extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(textHasil, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                        .addComponent(textHasil))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bJumlah)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(textTugas)
-                                .addComponent(textUjian, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(textUjian)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bJumlah)
+                                .addGap(0, 174, Short.MAX_VALUE))
+                            .addComponent(textTugas))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,41 +126,22 @@ public class PerhitunganRiqqi extends javax.swing.JFrame {
             float b = Float.parseFloat(textUjian.getText());
 
             if (a < 0 || b < 0) {
-                JOptionPane.showMessageDialog(this, "NILAI GA BOLE NEGATIF", "INFORMATION", JOptionPane.ERROR_MESSAGE);
-                textTugas.setText("");
-                textUjian.setText("");
-                textHasil.setText("");
+                textHasil.setText("NILAI GA BOLEH NEGATIF");
             } else if (a == 0 || b == 0) {
-                JOptionPane.showMessageDialog(this, "NILAI 0 TIDAK AKAN MENDAPAT HASIL", "INFORMATION", JOptionPane.ERROR_MESSAGE);
-                textTugas.setText("");
-                textUjian.setText("");
-                textHasil.setText("");
+                textHasil.setText("NILAI 0 TIDAK AKAN MENDAPAT HASIL");
             } else if (a <= 100 && b <= 100) {
                 float hasilJumlah = (a + b) / 2;
                 textHasil.setText(String.valueOf(hasilJumlah));
             } else {
-                JOptionPane.showMessageDialog(this, "NILAI DIATAS 100 GABOLE", "INFORMATION", JOptionPane.ERROR_MESSAGE);
-                textTugas.setText("");
-                textUjian.setText("");
-                textHasil.setText("");
+                textHasil.setText("NILAI DIATAS 100 GABOLE");
             }
         } catch (Exception e) {
             if (textTugas.getText().isEmpty() || textUjian.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "NILAI TIDAK BOLEH KOSONG", "INFORMATION", JOptionPane.ERROR_MESSAGE);
-                textTugas.setText("");
-                textUjian.setText("");
-                textHasil.setText("");
+                textHasil.setText("NILAI TIDAK BOLEH KOSONG");
             } else {
-                JOptionPane.showMessageDialog(this, "NILAI HARUS BERUPA ANGKA", "INFORMATION", JOptionPane.ERROR_MESSAGE);
-                textTugas.setText("");
-                textUjian.setText("");
-                textHasil.setText("");
+                textHasil.setText("NILAI HARUS BERUPA ANGKA");
             }
         }
-//        textTugas.setText("");
-//        textUjian.setText("");
-//        textHasil.setText("");
-//        textTugas.requestFocus();
     }//GEN-LAST:event_bJumlahActionPerformed
 
     /**
