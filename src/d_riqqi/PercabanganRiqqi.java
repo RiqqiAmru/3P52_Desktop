@@ -57,16 +57,17 @@ public class PercabanganRiqqi extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textKet, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
+                        .addComponent(textKet, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(textUsia, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jButton1)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(textUsia))))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,15 +91,20 @@ public class PercabanganRiqqi extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             int usia = Integer.parseInt(textUsia.getText());
-            if (usia >= 17) {
-                textKet.setText("DEWASA");
-            } else if (usia <= 17 && usia >= 1) {
-                textKet.setText("BELUM DEWASA");
+            if (usia >= 61) {
+                textKet.setText("MANULA");
+            } else if (usia <= 60 && usia >= 22) {
+                textKet.setText(" DEWASA");
+            } else if (usia <= 21 && usia >= 16) {
+                textKet.setText("REMAJA");
+            } else if (usia <= 15 && usia >= 1) {
+                textKet.setText(" ANAK ANAK");
             } else {
-                JOptionPane.showMessageDialog(this, "GA ADA USIA " + usia + " TAHUN", "ERROR", JOptionPane.ERROR_MESSAGE);
+                textKet.setText("TIDAK ADA UMUR DI BAWAH 0");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "MASUKKAN ANGKA SAJA", "ERROR", JOptionPane.ERROR_MESSAGE);
+            textKet.setText("MASUKKAN ANGKA SAJA");
+//            JOptionPane.showMessageDialog(this, "MASUKKAN ANGKA SAJA", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

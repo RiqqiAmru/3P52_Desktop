@@ -74,9 +74,10 @@ public class FrameHobbyRiqqi extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(checkMusik)
                             .addComponent(checkOlahraga)
-                            .addComponent(checkJalanJalan)
-                            .addComponent(buttonProses))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(checkJalanJalan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonProses))
+                        .addGap(75, 75, 75)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,13 +90,13 @@ public class FrameHobbyRiqqi extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(checkOlahraga))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(6, 6, 6)
                 .addComponent(checkMusik)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(checkJalanJalan)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkJalanJalan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(buttonProses)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -107,15 +108,23 @@ public class FrameHobbyRiqqi extends javax.swing.JFrame {
         String olahraga = "TIDAK";
         String musik = "TIDAK";
         String jalanJalan = "TIDAK";
+        int milihHobby = 0;
+        int gaMilihHobby = 3;
 
         if (checkOlahraga.isSelected()) {
             olahraga = "YA";
+            milihHobby++;
+            gaMilihHobby--;
         }
         if (checkMusik.isSelected()) {
             musik = "YA";
+            milihHobby++;
+            gaMilihHobby--;
         }
         if (checkJalanJalan.isSelected()) {
             jalanJalan = "YA";
+            milihHobby++;
+            gaMilihHobby--;
         }
 
         info += "\n NAMA  : " + nama;
@@ -123,8 +132,14 @@ public class FrameHobbyRiqqi extends javax.swing.JFrame {
         info += "\n    - OLAHGARA    : " + olahraga;
         info += "\n    - MUSIK       : " + musik;
         info += "\n    - JALAN-JALAN : " + jalanJalan;
+        info += "\n  HOBBY               : " + milihHobby;
+        info += "\n  TIDAK MEMILIH HOBBY : " + gaMilihHobby;
 
+        if(textNama.getText().isEmpty() | textNama.getText().isBlank()){
+           JOptionPane.showMessageDialog(this, "tolong isikan nama", "HOBBY", JOptionPane.INFORMATION_MESSAGE); 
+        }else{
         JOptionPane.showMessageDialog(this, info, "HOBBY", JOptionPane.INFORMATION_MESSAGE);
+        }
         textNama.setText("");
         textNama.requestFocus();
     }//GEN-LAST:event_buttonProsesActionPerformed
