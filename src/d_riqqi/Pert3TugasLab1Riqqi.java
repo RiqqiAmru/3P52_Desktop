@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -35,6 +36,7 @@ public class Pert3TugasLab1Riqqi extends javax.swing.JFrame {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        gender = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -53,6 +55,19 @@ public class Pert3TugasLab1Riqqi extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tabel = new javax.swing.JTable();
         delete = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        men = new javax.swing.JRadioButton();
+        women = new javax.swing.JRadioButton();
+        jLabel8 = new javax.swing.JLabel();
+        mabar = new javax.swing.JCheckBox();
+        baca = new javax.swing.JCheckBox();
+        makan = new javax.swing.JCheckBox();
+        belajar = new javax.swing.JCheckBox();
+        jLabel9 = new javax.swing.JLabel();
+        materi = new javax.swing.JComboBox<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jam = new javax.swing.JList<>();
+        jLabel10 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,7 +90,7 @@ public class Pert3TugasLab1Riqqi extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("MAKESTA");
+        jLabel1.setText("LESSS");
 
         jLabel2.setText("PARTICIPANT REGISTRATION FORM");
 
@@ -122,6 +137,43 @@ public class Pert3TugasLab1Riqqi extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setText("Gender");
+
+        gender.add(men);
+        men.setSelected(true);
+        men.setText("Men");
+
+        gender.add(women);
+        women.setText("Women");
+
+        jLabel8.setText("Hobby");
+
+        mabar.setText("Mabar");
+        mabar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mabarActionPerformed(evt);
+            }
+        });
+
+        baca.setText("Baca");
+
+        makan.setText("Makan");
+
+        belajar.setText("Belajar");
+
+        jLabel9.setText("Materi");
+
+        materi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Indonesia", "Agama", "Bahasa" }));
+
+        jam.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Pagi", "Siang", "Sore", "Malam" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(jam);
+
+        jLabel10.setText("Jam");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,36 +182,60 @@ public class Pert3TugasLab1Riqqi extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5)
-                            .addComponent(aa))
+                        .addComponent(jLabel9)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5))
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel2))
+                            .addComponent(aa)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(reset)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(submit))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                                    .addComponent(birth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(placeOfBirth)
-                                    .addComponent(name)
-                                    .addComponent(motto)))))
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(delete)))
-                .addContainerGap())
+                                .addComponent(jLabel10)
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(materi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(makan)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(belajar))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(men)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(women)
+                                            .addGap(18, 18, 18))
+                                        .addComponent(birth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(name)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(motto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(mabar)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(baca))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(40, 40, 40)
+                                            .addComponent(reset)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(submit))
+                                        .addComponent(placeOfBirth, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel4))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(delete)
+                                .addGap(22, 22, 22))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,6 +259,11 @@ public class Pert3TugasLab1Riqqi extends javax.swing.JFrame {
                             .addComponent(birth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(men)
+                            .addComponent(women))
+                        .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -190,13 +271,42 @@ public class Pert3TugasLab1Riqqi extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(motto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(aa)))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(mabar)
+                        .addComponent(baca)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(reset)
-                    .addComponent(submit)
-                    .addComponent(delete))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(makan)
+                    .addComponent(belajar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel9))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(materi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel10)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(11, 11, 11)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(reset)
+                                    .addComponent(submit))
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(delete)
+                                .addGap(33, 33, 33))))))
         );
 
         pack();
@@ -212,6 +322,7 @@ public class Pert3TugasLab1Riqqi extends javax.swing.JFrame {
         address.setText("");
         motto.setText("");
         birth.setDate(null);
+
     }//GEN-LAST:event_resetActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
@@ -225,20 +336,58 @@ public class Pert3TugasLab1Riqqi extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteActionPerformed
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        Calendar birthday = birth.getCalendar();
-        Date date = birthday.getTime();
-        SimpleDateFormat format1 = new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH);
-        String formatter = format1.format(date);
-        
-        tb.addRow(new Object[]{name.getText(), placeOfBirth.getText(),
-            formatter,address.getText(),motto.getText()});
-        tabel.setModel(tb);
-        name.setText("");
-        placeOfBirth.setText("");
-        address.setText("");
-        motto.setText("");
-        birth.setDate(null);
+//        ini buat tanggal
+        try {
+            Calendar birthday = birth.getCalendar();
+            Date date = birthday.getTime();
+            SimpleDateFormat format1 = new SimpleDateFormat("dd MMMM yyyy", Locale.JAPAN);
+            String formatter = format1.format(date);
+
+            String nama = name.getText();
+            String pob = placeOfBirth.getText();
+            String alamat = address.getText();
+            String moto = motto.getText();
+
+            String jenisKelamin;
+            if (men.isSelected()) {
+                jenisKelamin = "Men";
+            } else {
+                jenisKelamin = "Women";
+            }
+
+            String hobi = "";
+            if (mabar.isSelected()) {
+                hobi += " Mabar |";
+            }
+            if (makan.isSelected()) {
+                hobi += " Makan |";
+            }
+            if (baca.isSelected()) {
+                hobi += " Baca |";
+            }
+            if (belajar.isSelected()) {
+                hobi += " Belajar ";
+            }
+            String iniMateri = materi.getSelectedItem().toString();
+
+            String iniJam = jam.getSelectedValue().toString();
+//        static Object kolom[] = {"Name", "PoB", "Birth","Gender", "Address", "Motto","Hobby","Materi", "Jam"};
+            tb.addRow(new Object[]{nama, pob, formatter, jenisKelamin, alamat, moto, hobi, iniMateri, iniJam});
+            tabel.setModel(tb);
+            name.setText("");
+            placeOfBirth.setText("");
+            address.setText("");
+            motto.setText("");
+            birth.setDate(null);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.toString());
+        }
+
     }//GEN-LAST:event_submitActionPerformed
+
+    private void mabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mabarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mabarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,29 +424,43 @@ public class Pert3TugasLab1Riqqi extends javax.swing.JFrame {
         });
     }
     int baris = 0;
-    static Object kolom[] = {"Name", "PoB", "Birth", "Adress", "Motto"};
+    static Object kolom[] = {"Name", "PoB", "Birth", "Gender", "Address", "Motto", "Hobby", "Materi", "Jam"};
     DefaultTableModel tb = new DefaultTableModel(kolom, baris);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel aa;
     private javax.swing.JTextArea address;
+    private javax.swing.JCheckBox baca;
+    private javax.swing.JCheckBox belajar;
     private com.toedter.calendar.JDateChooser birth;
     private javax.swing.JButton delete;
+    private javax.swing.ButtonGroup gender;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
+    private javax.swing.JList<String> jam;
+    private javax.swing.JCheckBox mabar;
+    private javax.swing.JCheckBox makan;
+    private javax.swing.JComboBox<String> materi;
+    private javax.swing.JRadioButton men;
     private javax.swing.JTextField motto;
     private javax.swing.JTextField name;
     private javax.swing.JTextField placeOfBirth;
     private javax.swing.JButton reset;
     private javax.swing.JButton submit;
     private javax.swing.JTable tabel;
+    private javax.swing.JRadioButton women;
     // End of variables declaration//GEN-END:variables
 }
