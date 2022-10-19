@@ -6,6 +6,10 @@ package d_riqqi;
 
 import javax.swing.UIManager;
 import java.awt.Font;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,44 +23,22 @@ public class App {
         //For MessageArea and TextField font.
         UIManager.put("OptionPane.messageFont", font);
 
-        int awal = 1, inputan = 7, angkaMendatar = 12, angkaSamping = 0;
-        int angkaTengah = 0, spasi = 7, printSpasi = 0, angkaTampilTengah = 0;
-        String tampil = "";
-
-        while (awal <= inputan) {
-            angkaSamping = awal;
-            angkaMendatar = angkaSamping + 11;
-            angkaTengah = angkaSamping + 2;
-            angkaTampilTengah = angkaTengah;
-            printSpasi = spasi;
-            int angkaAkhir = 0;
-            while (angkaSamping >= 1) {
-                tampil += angkaMendatar + " ";
-                System.out.print(angkaMendatar + " ");
-                angkaAkhir += angkaMendatar;
-                angkaSamping--;
-                angkaMendatar++;
-            }
-            while (angkaTampilTengah >= 3) {
-                tampil += angkaTampilTengah + " ";
-                System.out.print(angkaTampilTengah + " ");
-                angkaTampilTengah--;
-                angkaAkhir += angkaTengah;
-            };
-            while (printSpasi >= 1) {
-                tampil += "     ";
-                System.out.print("     ");
-                printSpasi--;
-            }
-            tampil += " = " + angkaAkhir + "\n";
-            System.out.println(" = " + angkaAkhir);
-            awal++;
-            spasi--;
-
-        }
-//            JOptionPane.showMessageDialog(null, tampil);
-
-//        JOptionPane.showMessageDialog(null, tampil);
+       
+        double IDR_USD = 14997;
+            double IDR_EURO = 15235;
+            double IDR_JPN = 102.7231;
+            
+            double USD_JPN = 149.7755;
+            double USD_EURO = 1.0221;
+        
+            double JPN_EURO = 0.0068;
+            double inputJPNtoEURO = 90;
+            double hasil = inputJPNtoEURO *IDR_JPN/IDR_EURO;
+               double hasil2 = inputJPNtoEURO * JPN_EURO;
+            System.out.println(hasil);
+            System.out.println(1/0.0068);
+            
+//        System.out.printf("Harga: %s %n", UK.format(harga));
     }
 
 }
