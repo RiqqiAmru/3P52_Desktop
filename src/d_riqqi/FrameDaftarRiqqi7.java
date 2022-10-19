@@ -6,6 +6,7 @@ package d_riqqi;
 
 import java.awt.Font;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -20,6 +21,8 @@ public class FrameDaftarRiqqi7 extends javax.swing.JFrame {
     public FrameDaftarRiqqi7() {
         initComponents();
     }
+    int tarifKamar = 0;
+    int bayar = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,10 +33,19 @@ public class FrameDaftarRiqqi7 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         tarif = new javax.swing.JTextField();
         kelas = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jumlahHari = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jumlahBayar = new javax.swing.JTextField();
+        proses = new javax.swing.JButton();
+        labelKet = new javax.swing.JLabel();
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -59,6 +71,23 @@ public class FrameDaftarRiqqi7 extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("JUMLAH HARI");
+
+        jumlahHari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jumlahHariActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("JUMLAH BAYAR");
+
+        proses.setText("PROSES");
+        proses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prosesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -67,15 +96,31 @@ public class FrameDaftarRiqqi7 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(80, 80, 80)
+                        .addComponent(tarif))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(81, 81, 81)
+                        .addComponent(jumlahHari))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(kelas, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 102, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(80, 80, 80)
-                        .addComponent(tarif)))
+                        .addComponent(jLabel4)
+                        .addGap(73, 73, 73)
+                        .addComponent(jumlahBayar)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(labelKet))
+                    .addComponent(proses))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,7 +133,19 @@ public class FrameDaftarRiqqi7 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tarif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jumlahHari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jumlahBayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(proses)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelKet)
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
@@ -103,18 +160,53 @@ public class FrameDaftarRiqqi7 extends javax.swing.JFrame {
 
         if (tampil.equals("Kamar Melati")) {
             tarif.setText("Rp.50.000,-");
+            tarifKamar = 50000;
         } else if (tampil.equals("Kamar Kamboja")) {
             tarif.setText("Rp.70.000,-");
+            tarifKamar = 70000;
         } else if (tampil.equals("Kamar Anggrek")) {
             tarif.setText("Rp.90.000,-");
+            tarifKamar = 90000;
         } else {
             tarif.setText("Rp.120.000,-");
+            tarifKamar = 120000;
         }
     }//GEN-LAST:event_kelasActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
 //        String a = kelas.getSelectedItem().toString();
     }//GEN-LAST:event_formComponentShown
+
+    private void jumlahHariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlahHariActionPerformed
+
+    }//GEN-LAST:event_jumlahHariActionPerformed
+
+    private void prosesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prosesActionPerformed
+        try {
+            String tampilBayar = "0";
+            int hari = Integer.parseInt(jumlahHari.getText());
+
+            if (hari < 0) {
+                JOptionPane.showMessageDialog(this, "CHECK IN GA BISA NEGATIF");
+                jumlahHari.setText("");
+                jumlahBayar.setText("");
+            } else if (hari == 0) {
+                labelKet.setText("ANDA BELUM MEMILIH HARI");
+                jumlahBayar.setText(tampilBayar);
+            } else if (hari > 0) {
+                bayar = tarifKamar * hari;
+                tampilBayar = "Rp." + bayar;
+                jumlahBayar.setText(tampilBayar);
+                labelKet.setText("");
+            }
+        } catch (Exception e) {
+            if (jumlahHari.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "KOSONG GA BOLE KA");
+            } else {
+                JOptionPane.showMessageDialog(this, "INPUTAN ANGKA SAJA");
+            }
+        }
+    }//GEN-LAST:event_prosesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,7 +248,14 @@ public class FrameDaftarRiqqi7 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jumlahBayar;
+    private javax.swing.JTextField jumlahHari;
     private javax.swing.JComboBox<String> kelas;
+    private javax.swing.JLabel labelKet;
+    private javax.swing.JButton proses;
     private javax.swing.JTextField tarif;
     // End of variables declaration//GEN-END:variables
 }

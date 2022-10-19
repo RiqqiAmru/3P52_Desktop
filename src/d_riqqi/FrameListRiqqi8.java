@@ -35,6 +35,7 @@ public class FrameListRiqqi8 extends javax.swing.JFrame {
         kota = new javax.swing.JTextField();
         reset = new javax.swing.JButton();
         isiKota = new javax.swing.JButton();
+        ket = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,44 +77,42 @@ public class FrameListRiqqi8 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(reset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(reset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(isiKota))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(kota, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(kota, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(isiKota, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(jLabel2)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(jLabel1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                                .addComponent(jLabel2)))
+                        .addContainerGap(13, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ket)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(kota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(kota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(reset)
                     .addComponent(isiKota))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(ket)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
@@ -122,19 +121,38 @@ public class FrameListRiqqi8 extends javax.swing.JFrame {
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
         kt.clear();
         listKota.setModel(kt);
+        
+        ket.setText("");
     }//GEN-LAST:event_resetActionPerformed
 
     private void listKotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listKotaMouseClicked
         kota.setText(listKota.getSelectedValue().toString());
+        String kotaIni = listKota.getSelectedValue().toString();
+        
+        if(kotaIni.equals("SEMARANG")){
+            ket.setText("JARAK TEMPUH 12 KM, DENGAN BIAYA Rp.120.000,-");
+        }else  if(kotaIni.equals("PEKALONGAN")){
+            ket.setText("JARAK TEMPUH 0 KM, DENGAN BIAYA Rp.0,-");
+        }else  if(kotaIni.equals("BATANG")){
+            ket.setText("JARAK TEMPUH 5 KM, DENGAN BIAYA Rp.50.000,-");
+        }else  if(kotaIni.equals("PEMALANG")){
+            ket.setText("JARAK TEMPUH 13 KM, DENGAN BIAYA Rp.130.000,-");
+        }else  if(kotaIni.equals("TEGAL")){
+            ket.setText("JARAK TEMPUH 15 KM, DENGAN BIAYA Rp.150.000,-");
+        }
+        
     }//GEN-LAST:event_listKotaMouseClicked
 
     private void isiKotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isiKotaActionPerformed
+       if(kt.isEmpty()){    
         kt.addElement("SEMARANG");
         kt.addElement("PEKALONGAN");
         kt.addElement("BATANG");
         kt.addElement("PEMALANG");
         kt.addElement("TEGAL");
         listKota.setModel(kt);
+        ket.setText("");
+       }
     }//GEN-LAST:event_isiKotaActionPerformed
 
     /**
@@ -177,6 +195,7 @@ public class FrameListRiqqi8 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel ket;
     private javax.swing.JTextField kota;
     private javax.swing.JList<String> listKota;
     private javax.swing.JButton reset;
