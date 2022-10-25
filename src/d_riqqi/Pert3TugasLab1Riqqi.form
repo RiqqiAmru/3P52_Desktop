@@ -69,8 +69,16 @@
                                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Component id="birth" min="-2" pref="159" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                           <Component id="aa" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -93,7 +101,6 @@
                                           <Component id="women" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="birth" alignment="0" max="32767" attributes="0"/>
                                       <Component id="name" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jScrollPane1" alignment="1" min="-2" pref="177" max="-2" attributes="0"/>
                                       <Component id="motto" alignment="1" min="-2" pref="177" max="-2" attributes="0"/>
@@ -151,10 +158,10 @@
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="placeOfBirth" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="birth" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          <Component id="birth" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -259,8 +266,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Birth"/>
       </Properties>
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="birth">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
@@ -429,6 +434,8 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Jam"/>
       </Properties>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="birth">
     </Component>
   </SubComponents>
 </Form>
