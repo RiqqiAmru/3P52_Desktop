@@ -39,6 +39,8 @@ public class MainMenuRiqqi extends javax.swing.JFrame {
         master = new javax.swing.JMenu();
         iBarang = new javax.swing.JMenuItem();
         iPelanggan = new javax.swing.JMenuItem();
+        menuHargaLama = new javax.swing.JMenuItem();
+        menuPelangganLama = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,11 +48,11 @@ public class MainMenuRiqqi extends javax.swing.JFrame {
         desktop.setLayout(desktopLayout);
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 359, Short.MAX_VALUE)
+            .addGap(0, 567, Short.MAX_VALUE)
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 307, Short.MAX_VALUE)
+            .addGap(0, 495, Short.MAX_VALUE)
         );
 
         master.setText("Master");
@@ -71,6 +73,22 @@ public class MainMenuRiqqi extends javax.swing.JFrame {
         });
         master.add(iPelanggan);
 
+        menuHargaLama.setText("Data Harga Lama");
+        menuHargaLama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuHargaLamaActionPerformed(evt);
+            }
+        });
+        master.add(menuHargaLama);
+
+        menuPelangganLama.setText("Data Pelanggan Lama");
+        menuPelangganLama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPelangganLamaActionPerformed(evt);
+            }
+        });
+        master.add(menuPelangganLama);
+
         jMenuBar1.add(master);
 
         setJMenuBar(jMenuBar1);
@@ -79,11 +97,15 @@ public class MainMenuRiqqi extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktop)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -110,6 +132,28 @@ public class MainMenuRiqqi extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_iPelangganActionPerformed
+
+    private void menuHargaLamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuHargaLamaActionPerformed
+        DataLamaHarga dtl = new DataLamaHarga();
+        dtl.setVisible(true);
+        desktop.add(dtl);
+        try {
+            dtl.setSelected(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_menuHargaLamaActionPerformed
+
+    private void menuPelangganLamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPelangganLamaActionPerformed
+        DataLamaPelanggan dtl = new DataLamaPelanggan();
+        dtl.setVisible(true);
+        desktop.add(dtl);
+        try {
+            dtl.setSelected(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_menuPelangganLamaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,5 +197,7 @@ public class MainMenuRiqqi extends javax.swing.JFrame {
     private javax.swing.JMenuItem iPelanggan;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu master;
+    private javax.swing.JMenuItem menuHargaLama;
+    private javax.swing.JMenuItem menuPelangganLama;
     // End of variables declaration//GEN-END:variables
 }
