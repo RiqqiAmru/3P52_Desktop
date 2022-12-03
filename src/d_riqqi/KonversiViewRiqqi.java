@@ -4,12 +4,15 @@
  */
 package d_riqqi;
 
+import java.awt.Font;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,12 +25,51 @@ public class KonversiViewRiqqi extends javax.swing.JFrame {
     NumberFormat YEN = NumberFormat.getCurrencyInstance(Locale.JAPAN);     //kurs USD
     NumberFormat EURO = NumberFormat.getCurrencyInstance(Locale.FRANCE);     //kurs USD
 
+    DecimalFormat IDR = (DecimalFormat) DecimalFormat.getCurrencyInstance(); //kurs Indonesia
+    DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+    public int no = 0;
+    public String rupiah = "";
+    public double totalRupiah = 0;
+
     /**
      * Creates new form KonversiViewRiqqi
      */
     public KonversiViewRiqqi() {
         initComponents();
         modelList = new DefaultListModel();
+    }
+
+    private String ConvertFormat(String dari, double hasil) {
+
+        formatRp.setCurrencySymbol("Rp.");
+        formatRp.setMonetaryDecimalSeparator('.');
+        formatRp.setGroupingSeparator('.');
+        IDR.setDecimalFormatSymbols(formatRp);
+
+        String hasilTampil = "";
+        String nilaiKonversi = "";
+
+        if (kurs2.getSelectedIndex() == 0) {
+            nilaiKonversi = IDR.format(hasil);
+        } else if (kurs2.getSelectedIndex() == 1) {
+            nilaiKonversi = USD.format(hasil);
+        } else if (kurs2.getSelectedIndex() == 2) {
+            nilaiKonversi = YEN.format(hasil);
+        } else if (kurs2.getSelectedIndex() == 3) {
+            nilaiKonversi = EURO.format(hasil);
+        }
+
+        no++;
+        String nilaiNomor = no + "";
+        String nilaiAngka = dari;
+        String nilaiKurs1 = kurs1.getSelectedItem().toString();
+        String nilaiKurs2 = kurs2.getSelectedItem().toString();
+
+        tb.addRow(new Object[]{nilaiNomor, nilaiAngka, nilaiKurs1, nilaiKurs2, nilaiKonversi, rupiah});
+
+        hasilTampil = dari + " = " + nilaiKonversi + " | " + kurs2.getSelectedItem().toString() + " FROM " + kurs1.getSelectedItem().toString();
+        return hasilTampil;
     }
 
     /**
@@ -40,6 +82,7 @@ public class KonversiViewRiqqi extends javax.swing.JFrame {
     private void initComponents() {
 
         cetak = new javax.swing.ButtonGroup();
+        jToggleButton1 = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         nominal = new javax.swing.JTextField();
         kurs1 = new javax.swing.JComboBox<>();
@@ -52,9 +95,26 @@ public class KonversiViewRiqqi extends javax.swing.JFrame {
         konversi = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         history = new javax.swing.JList<>();
+        clear = new javax.swing.JToggleButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabel = new javax.swing.JTable();
+        aaa = new javax.swing.JLabel();
+        totalRupiahIni = new javax.swing.JLabel();
+
+        jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(12, 193, 53));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setLocation(new java.awt.Point(50, 30));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("Konversi Mata Uang");
 
         kurs1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Indonesian Rupiah IDR", "American Dollar USD", "Japan YEN", "European EURO\t", " " }));
@@ -88,86 +148,118 @@ public class KonversiViewRiqqi extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(history);
 
+        clear.setText("CLEAR");
+        clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearActionPerformed(evt);
+            }
+        });
+
+        tabel.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tabel);
+
+        aaa.setText("TOTAL RUPIAH = ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(jLabel4)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(nominal, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(kurs1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
                                 .addGap(49, 49, 49)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(ya)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(tidak))
-                                    .addComponent(kurs2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(102, 102, 102)
-                                .addComponent(konversi))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(98, 98, 98)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(konversi)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(clear))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(ya)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(tidak))
+                                        .addComponent(kurs2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(aaa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(totalRupiahIni, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nominal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kurs1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kurs2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(ya)
-                    .addComponent(tidak))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(konversi)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(aaa)
+                            .addComponent(totalRupiahIni))
+                        .addGap(0, 13, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nominal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(kurs1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(kurs2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(ya)
+                            .addComponent(tidak))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(konversi)
+                            .addComponent(clear))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1)))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void konversiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_konversiActionPerformed
-        DecimalFormat IDR = (DecimalFormat) DecimalFormat.getCurrencyInstance(); //kurs Indonesia
-        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
         formatRp.setCurrencySymbol("Rp.");
         formatRp.setMonetaryDecimalSeparator('.');
         formatRp.setGroupingSeparator('.');
         IDR.setDecimalFormatSymbols(formatRp);
-
         try {
-            double IDR_USD = 14997;
+            double IDR_USD = 14225.54;
             double IDR_EURO = 15235;
             double IDR_JPN = 102.7231;
 
@@ -176,6 +268,7 @@ public class KonversiViewRiqqi extends javax.swing.JFrame {
             double EURO_JPN = 146.5395;
 
             double nilaiNominal = Double.parseDouble(nominal.getText());
+<<<<<<< HEAD
             double hasil = 0;
             String hasilTampil = "";
             if (kurs1.getSelectedIndex() == 0) {
@@ -235,13 +328,83 @@ public class KonversiViewRiqqi extends javax.swing.JFrame {
                     hasilTampil = EURO.format(hasil) + " - " + kurs2.getSelectedItem().toString();
                 }
             }
+=======
+            String dari = "";
+>>>>>>> 28dda4bb2b97389aa9af4a1f8b69eb6cea6654c5
 
-            modelList.addElement(hasilTampil);
-            history.setModel(modelList);
+            if (nilaiNominal <= 0) {
+                JOptionPane.showMessageDialog(this, "NILAI " + nilaiNominal + " TIDAK BISA DIKONVERSI");
+                nominal.setText("");
+            } else {
+                double uang2 = 0;
 
-            if (ya.isSelected()) {
-                JOptionPane.showMessageDialog(this, "Hasil Konversi : "
-                        + hasilTampil, "INFORMASI", JOptionPane.INFORMATION_MESSAGE);
+                String hasilTampil = "";
+                if (kurs1.getSelectedIndex() == 0) {
+                    dari = IDR.format(nilaiNominal);
+                    rupiah = IDR.format(nilaiNominal);
+                    totalRupiah += nilaiNominal;
+                    if (kurs2.getSelectedIndex() == 0) {            //idr ke idr
+                        uang2 = nilaiNominal;
+                    } else if (kurs2.getSelectedIndex() == 1) {     //idr ke usd
+                        uang2 = nilaiNominal / IDR_USD;
+                    } else if (kurs2.getSelectedIndex() == 2) {          //idr ke yen
+                        uang2 = nilaiNominal / IDR_JPN;
+                    } else if (kurs2.getSelectedIndex() == 3) {          //idr ke euro
+                        uang2 = nilaiNominal / IDR_EURO;
+                    }
+                } else if (kurs1.getSelectedIndex() == 1) {
+                    dari = USD.format(nilaiNominal);
+                    double rupiahIni = nilaiNominal * IDR_USD;
+                    rupiah = IDR.format(rupiahIni);
+                    totalRupiah += rupiahIni;
+                    if (kurs2.getSelectedIndex() == 0) {            //USD KE IDR
+                        uang2 = nilaiNominal * IDR_USD;
+                    } else if (kurs2.getSelectedIndex() == 1) {     //USD KE USD
+                        uang2 = nilaiNominal;
+                    } else if (kurs2.getSelectedIndex() == 2) {     //USD KE JPN
+                        uang2 = nilaiNominal * USD_JPN;
+                    } else if (kurs2.getSelectedIndex() == 3) {     //USD KE EURO
+                        uang2 = nilaiNominal * USD_EURO;
+                    }
+                } else if (kurs1.getSelectedIndex() == 2) {
+                    dari = YEN.format(nilaiNominal);
+                    double rupiahIni = nilaiNominal * IDR_JPN;
+                    rupiah = IDR.format(rupiahIni);
+                    totalRupiah += rupiahIni;
+                    if (kurs2.getSelectedIndex() == 0) {            //JPN KE IDR
+                        uang2 = nilaiNominal * IDR_JPN;
+                    } else if (kurs2.getSelectedIndex() == 1) {     //JPN KE USD
+                        uang2 = nilaiNominal / USD_JPN;
+                    } else if (kurs2.getSelectedIndex() == 2) {     //JPN KE JPN
+                        uang2 = nilaiNominal;
+                    } else if (kurs2.getSelectedIndex() == 3) {     //JPN KE EURO
+                        uang2 = nilaiNominal / EURO_JPN;
+                    }
+                } else if (kurs1.getSelectedIndex() == 3) {
+                    dari = EURO.format(nilaiNominal);
+                    double rupiahIni = nilaiNominal * IDR_EURO;
+                    rupiah = IDR.format(rupiahIni);
+                    totalRupiah += rupiahIni;
+                    if (kurs2.getSelectedIndex() == 0) {            //EURO KE IDR
+                        uang2 = nilaiNominal * IDR_EURO;
+                    } else if (kurs2.getSelectedIndex() == 1) {     //EURO KE USD
+                        uang2 = nilaiNominal / USD_EURO;
+                    } else if (kurs2.getSelectedIndex() == 2) {     //EURO KE JPN
+                        uang2 = nilaiNominal * EURO_JPN;
+                    } else if (kurs2.getSelectedIndex() == 3) {     //EURO KE EURO
+                        uang2 = nilaiNominal;
+                    }
+                }
+                totalRupiahIni.setText(IDR.format(totalRupiah));
+                hasilTampil = ConvertFormat(dari, uang2);
+                modelList.addElement(hasilTampil);
+                history.setModel(modelList);
+
+                if (ya.isSelected()) {
+                    JOptionPane.showMessageDialog(this, "Hasil Konversi : "
+                            + hasilTampil, "INFORMASI", JOptionPane.INFORMATION_MESSAGE);
+                }
+
             }
 
         } catch (Exception e) {
@@ -258,6 +421,20 @@ public class KonversiViewRiqqi extends javax.swing.JFrame {
     private void kurs2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kurs2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_kurs2ActionPerformed
+
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+        modelList.clear();
+        history.setModel(modelList);
+        tb.getDataVector().clear();
+        tb.fireTableDataChanged();
+        tabel.setModel(tb);
+        totalRupiahIni.setText("");
+        no = 0;
+    }//GEN-LAST:event_clearActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        tabel.setModel(tb);
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments
@@ -287,26 +464,37 @@ public class KonversiViewRiqqi extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        Font font = new Font("Monospaced", Font.PLAIN, 15);
+        //For MessageArea and TextField font.
+        UIManager.put("OptionPane.messageFont", font);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new KonversiViewRiqqi().setVisible(true);
             }
         });
     }
-
+    int baris = 0;
+    static Object kolom[] = {"NO", "NILAI ANGKA", "KURS 1", "KURS 2", "KONVERSI", "RUPIAH"};
+    DefaultTableModel tb = new DefaultTableModel(kolom, baris);
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel aaa;
     private javax.swing.ButtonGroup cetak;
+    private javax.swing.JToggleButton clear;
     private javax.swing.JList<String> history;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton konversi;
     private javax.swing.JComboBox<String> kurs1;
     private javax.swing.JComboBox<String> kurs2;
     private javax.swing.JTextField nominal;
+    private javax.swing.JTable tabel;
     private javax.swing.JRadioButton tidak;
+    private javax.swing.JLabel totalRupiahIni;
     private javax.swing.JRadioButton ya;
     // End of variables declaration//GEN-END:variables
 }
