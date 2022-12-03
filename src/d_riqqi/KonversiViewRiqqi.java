@@ -170,11 +170,11 @@ public class KonversiViewRiqqi extends javax.swing.JFrame {
             double IDR_USD = 14997;
             double IDR_EURO = 15235;
             double IDR_JPN = 102.7231;
-            
+
             double USD_JPN = 149.7755;
             double USD_EURO = 1.0221;
             double EURO_JPN = 146.5395;
-            
+
             double nilaiNominal = Double.parseDouble(nominal.getText());
             double hasil = 0;
             String hasilTampil = "";
@@ -192,45 +192,45 @@ public class KonversiViewRiqqi extends javax.swing.JFrame {
                     hasil = nilaiNominal / IDR_EURO;
                     hasilTampil = EURO.format(hasil) + " - " + kurs2.getSelectedItem().toString();
                 }
-            } else if (kurs1.getSelectedIndex() == 1) {     
+            } else if (kurs1.getSelectedIndex() == 1) {
                 if (kurs2.getSelectedIndex() == 0) {            //USD KE IDR
                     hasil = nilaiNominal * IDR_USD;
                     hasilTampil = IDR.format(hasil) + " - " + kurs2.getSelectedItem().toString();
                 } else if (kurs2.getSelectedIndex() == 1) {     //USD KE USD
                     hasil = nilaiNominal;
                     hasilTampil = USD.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                }else if (kurs2.getSelectedIndex() == 2) {     //USD KE JPN
+                } else if (kurs2.getSelectedIndex() == 2) {     //USD KE JPN
                     hasil = nilaiNominal * USD_JPN;
                     hasilTampil = YEN.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                }else if (kurs2.getSelectedIndex() == 3) {     //USD KE EURO
+                } else if (kurs2.getSelectedIndex() == 3) {     //USD KE EURO
                     hasil = nilaiNominal * USD_EURO;
                     hasilTampil = EURO.format(hasil) + " - " + kurs2.getSelectedItem().toString();
                 }
-            }else if (kurs1.getSelectedIndex() == 2) {     
+            } else if (kurs1.getSelectedIndex() == 2) {
                 if (kurs2.getSelectedIndex() == 0) {            //JPN KE IDR
                     hasil = nilaiNominal * IDR_JPN;
                     hasilTampil = IDR.format(hasil) + " - " + kurs2.getSelectedItem().toString();
                 } else if (kurs2.getSelectedIndex() == 1) {     //JPN KE USD
                     hasil = nilaiNominal / USD_JPN;
                     hasilTampil = USD.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                }else if (kurs2.getSelectedIndex() == 2) {     //JPN KE JPN
-                    hasil = nilaiNominal ;
+                } else if (kurs2.getSelectedIndex() == 2) {     //JPN KE JPN
+                    hasil = nilaiNominal;
                     hasilTampil = YEN.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                }else if (kurs2.getSelectedIndex() == 3) {     //JPN KE EURO
+                } else if (kurs2.getSelectedIndex() == 3) {     //JPN KE EURO
                     hasil = nilaiNominal / EURO_JPN;
                     hasilTampil = EURO.format(hasil) + " - " + kurs2.getSelectedItem().toString();
                 }
-            }else if (kurs1.getSelectedIndex() == 3) {     
+            } else if (kurs1.getSelectedIndex() == 3) {
                 if (kurs2.getSelectedIndex() == 0) {            //EURO KE IDR
                     hasil = nilaiNominal * IDR_EURO;
                     hasilTampil = IDR.format(hasil) + " - " + kurs2.getSelectedItem().toString();
                 } else if (kurs2.getSelectedIndex() == 1) {     //EURO KE USD
                     hasil = nilaiNominal / USD_EURO;
                     hasilTampil = USD.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                }else if (kurs2.getSelectedIndex() == 2) {     //EURO KE JPN
-                    hasil = nilaiNominal ;
+                } else if (kurs2.getSelectedIndex() == 2) {     //EURO KE JPN
+                    hasil = nilaiNominal;
                     hasilTampil = YEN.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                }else if (kurs2.getSelectedIndex() == 3) {     //EURO KE EURO
+                } else if (kurs2.getSelectedIndex() == 3) {     //EURO KE EURO
                     hasil = nilaiNominal / EURO_JPN;
                     hasilTampil = EURO.format(hasil) + " - " + kurs2.getSelectedItem().toString();
                 }
@@ -266,7 +266,7 @@ public class KonversiViewRiqqi extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
