@@ -268,69 +268,8 @@ public class KonversiViewRiqqi extends javax.swing.JFrame {
             double EURO_JPN = 146.5395;
 
             double nilaiNominal = Double.parseDouble(nominal.getText());
-<<<<<<< HEAD
-            double hasil = 0;
-            String hasilTampil = "";
-            if (kurs1.getSelectedIndex() == 0) {
-                if (kurs2.getSelectedIndex() == 0) {            //idr ke idr
-                    hasil = nilaiNominal;
-                    hasilTampil = IDR.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                } else if (kurs2.getSelectedIndex() == 1) {     //idr ke usd
-                    hasil = nilaiNominal / IDR_USD;
-                    hasilTampil = USD.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                } else if (kurs2.getSelectedIndex() == 2) {          //idr ke yen
-                    hasil = nilaiNominal / IDR_JPN;
-                    hasilTampil = YEN.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                } else if (kurs2.getSelectedIndex() == 3) {          //idr ke euro
-                    hasil = nilaiNominal / IDR_EURO;
-                    hasilTampil = EURO.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                }
-            } else if (kurs1.getSelectedIndex() == 1) {
-                if (kurs2.getSelectedIndex() == 0) {            //USD KE IDR
-                    hasil = nilaiNominal * IDR_USD;
-                    hasilTampil = IDR.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                } else if (kurs2.getSelectedIndex() == 1) {     //USD KE USD
-                    hasil = nilaiNominal;
-                    hasilTampil = USD.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                } else if (kurs2.getSelectedIndex() == 2) {     //USD KE JPN
-                    hasil = nilaiNominal * USD_JPN;
-                    hasilTampil = YEN.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                } else if (kurs2.getSelectedIndex() == 3) {     //USD KE EURO
-                    hasil = nilaiNominal * USD_EURO;
-                    hasilTampil = EURO.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                }
-            } else if (kurs1.getSelectedIndex() == 2) {
-                if (kurs2.getSelectedIndex() == 0) {            //JPN KE IDR
-                    hasil = nilaiNominal * IDR_JPN;
-                    hasilTampil = IDR.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                } else if (kurs2.getSelectedIndex() == 1) {     //JPN KE USD
-                    hasil = nilaiNominal / USD_JPN;
-                    hasilTampil = USD.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                } else if (kurs2.getSelectedIndex() == 2) {     //JPN KE JPN
-                    hasil = nilaiNominal;
-                    hasilTampil = YEN.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                } else if (kurs2.getSelectedIndex() == 3) {     //JPN KE EURO
-                    hasil = nilaiNominal / EURO_JPN;
-                    hasilTampil = EURO.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                }
-            } else if (kurs1.getSelectedIndex() == 3) {
-                if (kurs2.getSelectedIndex() == 0) {            //EURO KE IDR
-                    hasil = nilaiNominal * IDR_EURO;
-                    hasilTampil = IDR.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                } else if (kurs2.getSelectedIndex() == 1) {     //EURO KE USD
-                    hasil = nilaiNominal / USD_EURO;
-                    hasilTampil = USD.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                } else if (kurs2.getSelectedIndex() == 2) {     //EURO KE JPN
-                    hasil = nilaiNominal;
-                    hasilTampil = YEN.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                } else if (kurs2.getSelectedIndex() == 3) {     //EURO KE EURO
-                    hasil = nilaiNominal / EURO_JPN;
-                    hasilTampil = EURO.format(hasil) + " - " + kurs2.getSelectedItem().toString();
-                }
-            }
-=======
+
             String dari = "";
->>>>>>> 28dda4bb2b97389aa9af4a1f8b69eb6cea6654c5
 
             if (nilaiNominal <= 0) {
                 JOptionPane.showMessageDialog(this, "NILAI " + nilaiNominal + " TIDAK BISA DIKONVERSI");
